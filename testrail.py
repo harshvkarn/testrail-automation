@@ -15,8 +15,8 @@ import json, base64
 
 class APIClient:
 	def __init__(self, base_url):
-		self.user = 'xxxxxxx'
-		self.password = 'xxxxxx'
+		self.user = 'karthik.s@cloudbyte.com'
+		self.password = 'openebs'
 		if not base_url.endswith('/'):
 			base_url += '/'
 		self.__url = base_url + 'index.php?/api/v2/'

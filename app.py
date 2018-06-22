@@ -1,9 +1,10 @@
 from testrail import *
+from issue import *
 import pprint
 
-client = APIClient('https://xxxxxxxxx.testrail.com/')
-client.user = 'xxxxxxx'
-client.password = 'xxxxxx'
+client = APIClient('https://cloudbyte.testrail.com/')
+client.user = 'karthik.s@cloudbyte.com'
+client.password = 'openebs'
  
 result = client.send_post(
 	'add_run/1',
@@ -18,15 +19,16 @@ update = client.send_post(
 		{
 			"case_id": 166292,
             "status_id": 5,
-			"comment": "This test failed(api testing)",
+			"comment": "This test failed(api testing) 2",
 			"defects": "TR-7"
         },
         {
 			"case_id": 166291,
             "status_id": 1,
-			"comment": "This test passed(api testing)",
+			"comment": "This test passed(api testing) 2",
         }
     ]
     }
     )
 pprint.pprint(update)
+make_github_issue('demo title', 'demo body', ['e2e'])
