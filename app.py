@@ -2,8 +2,8 @@ from testrail import *
 from issue import *
 import pprint
 
-client = APIClient('https://cloudbyte.testrail.com/')
-client.user = 'karthik.s@cloudbyte.com'
+client = APIClient('')
+client.user = ''
 client.password = 'openebs'
  
 result = client.send_post(
@@ -12,23 +12,27 @@ result = client.send_post(
 )
 run_id = result['id']
 arg = 'add_results_for_cases/' + str(run_id)
-update = client.send_post(
-    arg,
-    {
-	"results": [
-		{
-			"case_id": 166292,
-            "status_id": 5,
-			"comment": "This test failed(api testing) 2",
-			"defects": "TR-7"
-        },
-        {
-			"case_id": 166291,
-            "status_id": 1,
-			"comment": "This test passed(api testing) 2",
-        }
-    ]
-    }
-    )
+playbookResult = {
+"results":[
+  {
+    "case_id": 166292,
+    "status_id": 1,
+    "comment": "This test failed(api testing)",
+    "defects": "TR-7"
+  },
+  {
+    "case_id": 166291,
+    "status_id": 1,
+    "comment": "This test passed(api testing)"
+  }
+]
+}
+update = client.send_post(arg, playbookResult)
 pprint.pprint(update)
-make_github_issue('demo title', 'demo body', ['e2e'])
+length = len(playbookResult['results'])
+x = playbookResult['results'][0]['comment']
+# print(length)
+for i in range(0, length):
+    if playbookResult['results'][i]['status_id'] == 5:
+        print(playbookResult['results'][i]['defects'])
+        make_github_issue(playbookResult['results'][i]['defects'],playbookResult['results'][i]['comment'] , ['e2e'])

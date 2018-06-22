@@ -3,9 +3,9 @@ import requests
 import os
 
 
-USERNAME = 'harshvkarn'
+USERNAME = ''
 #PASSWORD = os.environ['PASSWORD'] # Passing password in Environment
-PASSWORD = 'mynameiskarn@@4'
+PASSWORD = ''
 
 # The repository to add this issue to
 REPO_OWNER = 'harshvkarn'

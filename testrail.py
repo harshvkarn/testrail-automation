@@ -1,15 +1,3 @@
-#
-# TestRail API binding for Python 3.x (API v2, available since 
-# TestRail 3.0)
-#
-# Learn more:
-#
-# http://docs.gurock.com/testrail-api2/start
-# http://docs.gurock.com/testrail-api2/accessing
-#
-# Copyright Gurock Software GmbH. See license.md for details.
-#
-
 import urllib.request, urllib.error
 import json, base64
 
